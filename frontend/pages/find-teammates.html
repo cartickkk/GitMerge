@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="../css/cards.css">
 </head>
 <body>
+    <div class="global-bg-canvas">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="mouse-follower-glow" id="mouseGlow"></div>
+</div>
+
     <header class="navbar">
         <div class="nav-brand">
             <span>GitMerge</span>
@@ -47,5 +54,14 @@
 
     <script src="../js/config.js"></script>
     <script src="../js/teammates.js"></script>
+    <script>
+    document.addEventListener("mousemove", (e) => {
+        const glow = document.getElementById("mouseGlow");
+        if (glow) {
+            glow.style.left = `${e.clientX}px`;
+            glow.style.top = `${e.clientY}px`;
+        }
+    });
+</script>
 </body>
 </html>

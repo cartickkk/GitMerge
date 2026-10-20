@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="css/cards.css">
 </head>
 <body>
+    <!-- INTERACTIVE BACKGROUND CANVAS -->
+    <div class="global-bg-canvas">
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+        <div class="bg-orb orb-3"></div>
+        <div class="mouse-follower-glow" id="mouseGlow"></div>
+    </div>
+
     <header class="navbar">
         <div class="nav-brand">
             <a href="index.html" class="brand-title">GitMerge</a>
@@ -131,18 +139,31 @@
 
     <script src="js/config.js"></script>
     <script>
+        // Interactive Mouse Follower & 3D Tilt
         document.addEventListener("DOMContentLoaded", () => {
+            const glow = document.getElementById("mouseGlow");
             const stage = document.getElementById("orbitStage");
-            if (stage) {
-                window.addEventListener("mousemove", (e) => {
+
+            window.addEventListener("mousemove", (e) => {
+                // Move the interactive background glow
+                if (glow) {
+                    glow.style.left = `${e.clientX}px`;
+                    glow.style.top = `${e.clientY}px`;
+                }
+
+                // Smooth 3D parallax on the orbit hub
+                if (stage) {
                     const x = (window.innerWidth / 2 - e.pageX) / 45;
                     const y = (window.innerHeight / 2 - e.pageY) / 45;
                     stage.style.transform = `perspective(1000px) rotateY(${-x}deg) rotateX(${y}deg)`;
-                });
-                window.addEventListener("mouseleave", () => {
+                }
+            });
+
+            window.addEventListener("mouseleave", () => {
+                if (stage) {
                     stage.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
-                });
-            }
+                }
+            });
         });
     </script>
 </body>

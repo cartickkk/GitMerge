@@ -3,38 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitMerge | Login</title>
+    <title>GitMerge | Authentication</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/login.css">
 </head>
-<body>
+<body class="login-page-body">
+
+    <!-- INTERACTIVE BACKGROUND CANVAS -->
+    <div class="global-bg-canvas">
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+        <div class="bg-orb orb-3"></div>
+        <div class="mouse-follower-glow" id="mouseGlow"></div>
+    </div>
+
     <main class="login-container">
         <div class="login-card">
             <header class="login-header">
-                <h1>git merge --login</h1>
-                <p>Sign in to access your hackathon squads and merge requests.</p>
+                <span class="directory-badge">Secure Gateway</span>
+                <h2 id="formTitle">Authentication Hub</h2>
+                <p class="panel-subtitle" id="formSubtitle">Authenticate to initialize your session and access hackathon squads.</p>
             </header>
 
             <section class="login-body">
                 <form class="login-form" id="loginForm">
+                    <div class="form-group" id="nameGroup" style="display: none;">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="e.g. Kartik Jain">
+                    </div>
+
                     <div class="form-group">
                         <label for="username">Username or GitHub Handle</label>
-                        <input type="text" id="username" name="username" placeholder="e.g. dopa0111" required>
+                        <input type="text" id="username" name="username" placeholder="e.g. kartik_dev" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        <label for="password">Password / Passcode</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password" placeholder="••••••••" required>
+                            <button type="button" id="togglePassword" class="eye-btn" title="Show/Hide Password">👁️</button>
+                        </div>
                     </div>
 
-                    <button type="submit" class="btn-submit" id="loginBtn">git merge --login</button>
-                    <p id="statusMessage" class="status-badge"></p>
+                    <div class="auth-aux-row" id="auxRow">
+                        <a href="#" id="forgotLink" class="aux-link">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submitBtn">Authorize Merge</button>
+                    <p id="statusMessage" class="status-badge" style="display: none;"></p>
                 </form>
+
+                <div class="auth-switch-prompt">
+                    <span id="switchText">Don't have an account?</span> 
+                    <a href="#" id="switchModeBtn">Sign Up</a>
+                </div>
             </section>
         </div>
     </main>
 
     <script src="../js/config.js"></script>
     <script src="../js/login.js"></script>
+    <script>
+        document.addEventListener("mousemove", (e) => {
+            const glow = document.getElementById("mouseGlow");
+            if (glow) {
+                glow.style.left = `${e.clientX}px`;
+                glow.style.top = `${e.clientY}px`;
+            }
+        });
+    </script>
 </body>
 </html>
