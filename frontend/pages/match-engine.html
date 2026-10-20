@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitMerge | Match Engine</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/cards.css">
+    <style>
+        .matcher-wrapper {
+            flex: 1;
+            max-width: 960px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 104px 24px 50px 24px; /* Clears navbar cleanly */
+        }
+
+        .matcher-card {
+            background: var(--bg-glass-card);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--border-glass);
+            border-top: 1.5px solid var(--border-glass-top);
+            border-radius: 28px;
+            padding: 38px 40px;
+            box-shadow: var(--shadow-glossy);
+        }
+
+        .matcher-header {
+            margin-bottom: 26px;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 18px;
+            text-align: left;
+        }
+
+        .matcher-header h1 {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--c-white);
+            letter-spacing: -0.5px;
+            margin-top: 8px;
+            margin-bottom: 6px;
+        }
+
+        .panel-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        .dropdown-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--c-white);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 13px 18px;
+            background: rgba(14, 28, 10, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glass);
+            border-radius: 14px;
+            color: var(--c-white);
+            font-size: 14px;
+            font-weight: 600;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border-color: var(--c-lime);
+            box-shadow: var(--glow-lime);
+        }
+
+        .btn-compute {
+            width: 100%;
+            padding: 15px;
+            background: var(--c-lime);
+            color: var(--text-dark);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: var(--glow-lime), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+            transition: all 0.2s ease;
+        }
+
+        .btn-compute:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .results-panel {
+            display: none;
+            background: rgba(12, 24, 8, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            padding: 24px;
+            margin-top: 26px;
+        }
+
+        .score-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .score-circle {
+            font-size: 34px;
+            font-weight: 900;
+            font-family: monospace;
+            color: var(--c-lime);
+            text-shadow: var(--glow-lime);
+        }
+
+        .verdict-text {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--c-white);
+            margin-top: 3px;
+        }
+
+        .breakdown-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-top: 1px solid var(--border-glass);
+            padding-top: 16px;
+        }
+
+        .breakdown-item {
+            font-size: 13.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+        }
+
+        .terminal-note {
+            font-family: monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-top: 16px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-brand">
+            <a href="../index.html" class="brand-title">GitMerge</a>
+            <span class="brand-badge">lab-build</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html" class="nav-item">Home</a></li>
+            <li><a href="find-teammates.html" class="nav-item">Find Teammates</a></li>
+            <li><a href="find-teams.html" class="nav-item">Find Teams</a></li>
+            <li><a href="match-engine.html" class="nav-item active">Match Engine</a></li>
+            <li><a href="create-squad.html" class="nav-item">Post a Team</a></li>
+        </ul>
+        <div class="nav-right">
+            <span class="engine-status"><span class="pulse-dot"></span>Port 8080</span>
+            <a href="profile.html" class="btn-profile-link">My Profile</a>
+        </div>
+    </header>
+
+    <main class="matcher-wrapper">
+        <section class="matcher-card">
+            <header class="matcher-header">
+                <span class="directory-badge">Algorithm Engine</span>
+                <h1>Merge Check</h1>
+                <p class="panel-subtitle">Evaluate skill complementarity and test role gap resolutions in real time.</p>
+            </header>
+
+            <div class="dropdown-grid">
+                <div class="form-group">
+                    <label for="selectSquad">Target Open Squad</label>
+                    <select id="selectSquad" class="input-field">
+                        <option value="AlgoWarriors">AlgoWarriors (Needs: Frontend Specialist)</option>
+                        <option value="CyberMesh">CyberMesh (Needs: UI/UX & Product Designer)</option>
+                        <option value="VisionPulse">VisionPulse (Needs: Backend Specialist)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="selectCandidate">Candidate Solo Hacker</label>
+                    <select id="selectCandidate" class="input-field">
+                        <option value="Aarav Sharma">Aarav Sharma (Role: Frontend Specialist)</option>
+                        <option value="Priya Patel">Priya Patel (Role: Backend Specialist)</option>
+                        <option value="Rohan Verma">Rohan Verma (Role: UI/UX & Product Designer)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="button" class="btn-compute" id="btnCalculate">Check Compatibility</button>
+
+            <div class="results-panel" id="resultsBox">
+                <div class="score-row">
+                    <div>
+                        <span style="font-size: 11px; font-family: monospace; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted);">Match Score</span>
+                        <p class="verdict-text" id="verdictLabel">Optimal Match Identified</p>
+                    </div>
+                    <div class="score-circle" id="scoreDisplay">94%</div>
+                </div>
+
+                <ul class="breakdown-list">
+                    <li class="breakdown-item">✅ <span id="roleMatchNote">Resolves missing primary role constraint.</span></li>
+                    <li class="breakdown-item">✅ <span id="stackMatchNote">Possesses required tech stack components.</span></li>
+                    <li class="breakdown-item">✅ <span>Roster capacity limit guard satisfied (&lt; 4 members).</span></li>
+                </ul>
+
+                <p class="terminal-note">Calculated by C++ Matching Engine • Real-Time Analysis</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/matcher.js"></script>
+</body>
+</html>

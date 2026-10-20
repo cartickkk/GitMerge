@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitMerge | Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/cards.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-brand">
+            <a href="index.html" class="brand-title">GitMerge</a>
+            <span class="brand-badge">lab-build</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-item active">Home</a></li>
+            <li><a href="pages/find-teammates.html" class="nav-item">Find Teammates</a></li>
+            <li><a href="pages/find-teams.html" class="nav-item">Find Teams</a></li>
+            <li><a href="pages/match-engine.html" class="nav-item">Match Engine</a></li>
+            <li><a href="pages/create-squad.html" class="nav-item">Post a Team</a></li>
+        </ul>
+        <div class="nav-right">
+            <span class="engine-status"><span class="pulse-dot"></span>Port 8080</span>
+            <a href="pages/profile.html" class="btn-profile-link">My Profile</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-orbit-section">
+        <div class="hero-text-content">
+            <span class="directory-badge">Automated Squad Matcher</span>
+            <h1 class="hero-title">Merge Skills.<br><span class="highlight-lime">Zero Conflicts.</span></h1>
+            <p class="hero-desc">
+                Pair with developers across complementary tech stacks and form balanced 4-person hackathon squads automatically.
+            </p>
+            <div class="hero-actions">
+                <a href="pages/profile.html" class="btn-hero-primary">Create Profile</a>
+                <a href="pages/match-engine.html" class="btn-hero-secondary">Test Match Engine</a>
+            </div>
+        </div>
+
+        <div class="orbit-stage" id="orbitStage">
+            <div class="floating-particle p1">⚡</div>
+            <div class="floating-particle p2">✦</div>
+            <div class="floating-particle p3">●</div>
+            <div class="floating-particle p4">▲</div>
+
+            <div class="orbit-center">
+                <div class="center-core">
+                    <span class="core-icon">🚀</span>
+                    <span class="core-label">GitMerge</span>
+                </div>
+                <div class="center-pulse"></div>
+            </div>
+
+            <!-- Explicit inline fill="none" prevents black circle bug -->
+            <svg class="orbit-svg-tracks" viewBox="0 0 360 360" width="360" height="360" style="fill: none;">
+                <circle class="track-circle track-outer" cx="180" cy="180" r="148" fill="none"></circle>
+                <circle class="track-circle track-inner" cx="180" cy="180" r="95" fill="none"></circle>
+            </svg>
+
+            <div class="orbit-ring" id="orbitRing">
+                <div class="orbit-node node-1">
+                    <span class="node-icon">⚙️</span>
+                    <span class="node-tooltip">C++ Backend</span>
+                </div>
+                <div class="orbit-node node-2">
+                    <span class="node-icon">⚛️</span>
+                    <span class="node-tooltip">Frontend Dev</span>
+                </div>
+                <div class="orbit-node node-3">
+                    <span class="node-icon">🎨</span>
+                    <span class="node-tooltip">UI/UX Design</span>
+                </div>
+                <div class="orbit-node node-4">
+                    <span class="node-icon">🧠</span>
+                    <span class="node-tooltip">AI / ML</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4 Feature Shortcuts Section -->
+    <section class="shortcuts-section">
+        <header class="shortcuts-header">
+            <span class="directory-badge">Core Workflows</span>
+            <h2>Explore GitMerge Features</h2>
+            <p>Access directories, match algorithms, and recruitment tools.</p>
+        </header>
+
+        <div class="shortcuts-grid">
+            <a href="pages/find-teammates.html" class="shortcut-card">
+                <div>
+                    <div class="shortcut-icon-bubble">👤</div>
+                    <h3 class="shortcut-title">Find Teammates</h3>
+                    <p class="shortcut-desc">Browse solo participants looking for a squad, filter by specific tech stacks, and send merge requests.</p>
+                </div>
+                <span class="shortcut-action-link">Open Directory &rarr;</span>
+            </a>
+
+            <a href="pages/find-teams.html" class="shortcut-card">
+                <div>
+                    <div class="shortcut-icon-bubble">👥</div>
+                    <h3 class="shortcut-title">Find Teams</h3>
+                    <p class="shortcut-desc">Discover incomplete teams actively searching for frontend, backend, or design talent to complete their rosters.</p>
+                </div>
+                <span class="shortcut-action-link">Explore Squads &rarr;</span>
+            </a>
+
+            <a href="pages/match-engine.html" class="shortcut-card">
+                <div>
+                    <div class="shortcut-icon-bubble">⚡</div>
+                    <h3 class="shortcut-title">Match Engine</h3>
+                    <p class="shortcut-desc">Run our C++ algorithmic compatibility checker to calculate real-time skill synergy and role-gap resolution.</p>
+                </div>
+                <span class="shortcut-action-link">Run Engine &rarr;</span>
+            </a>
+
+            <a href="pages/create-squad.html" class="shortcut-card">
+                <div>
+                    <div class="shortcut-icon-bubble">🚀</div>
+                    <h3 class="shortcut-title">Post a Team</h3>
+                    <p class="shortcut-desc">Register your team idea, track open member spots, and publish bounty listings for missing roles.</p>
+                </div>
+                <span class="shortcut-action-link">Post Opening &rarr;</span>
+            </a>
+        </div>
+    </section>
+
+    <script src="js/config.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const stage = document.getElementById("orbitStage");
+            if (stage) {
+                window.addEventListener("mousemove", (e) => {
+                    const x = (window.innerWidth / 2 - e.pageX) / 45;
+                    const y = (window.innerHeight / 2 - e.pageY) / 45;
+                    stage.style.transform = `perspective(1000px) rotateY(${-x}deg) rotateX(${y}deg)`;
+                });
+                window.addEventListener("mouseleave", () => {
+                    stage.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

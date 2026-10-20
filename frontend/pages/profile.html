@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitMerge | Profile Builder</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+<body class="profile-page-body">
+
+    <!-- ==============================================
+         AUTUMN LEAF FALL & GLIDING SPRITE ANIMATION LAYER 
+         (Active strictly on this tab)
+         ============================================== -->
+    <div class="profile-bg-animation-container">
+        <!-- Floating & Falling Leaves System -->
+        <div class="leaves-container">
+            <div class="leaf-item leaf-1">🍃</div>
+            <div class="leaf-item leaf-2">🍂</div>
+            <div class="leaf-item leaf-3">🌿</div>
+            <div class="leaf-item leaf-4">🍁</div>
+            <div class="leaf-item leaf-5">🍃</div>
+            <div class="leaf-item leaf-6">🍂</div>
+            <div class="leaf-item leaf-7">🌿</div>
+            <div class="leaf-item leaf-8">🍁</div>
+        </div>
+
+        <!-- Gliding Cyclist Character Layer -->
+        <div class="gliding-character-wrapper">
+            <div class="gliding-cyclist">🚴‍♂️</div>
+        </div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-brand">
+            <span>GitMerge</span>
+            <span class="brand-badge">lab-build</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html" class="nav-item">Home</a></li>
+            <li><a href="find-teammates.html" class="nav-item">Find Teammates</a></li>
+            <li><a href="find-teams.html" class="nav-item">Find Teams</a></li>
+            <li><a href="match-engine.html" class="nav-item">Match Engine</a></li>
+            <li><a href="create-squad.html" class="nav-item">Post a Team</a></li>
+        </ul>
+        <div class="nav-right">
+            <span class="engine-status"><span class="pulse-dot"></span>Port 8080</span>
+            <a href="profile.html" class="btn-profile-link active">My Profile</a>
+        </div>
+    </header>
+
+    <main class="profile-container">
+        <!-- Left: Form -->
+        <section class="profile-form-panel">
+            <div class="panel-header">
+                <span class="directory-badge">Developer Identity</span>
+                <h2>Developer Profile</h2>
+                <p class="panel-subtitle">Build your hacker card to get discovered and invited by squads.</p>
+            </div>
+
+            <form id="profileForm">
+                <!-- Section A: Identity -->
+                <div class="form-section">
+                    <h3 class="section-title">Section A: Core Identity</h3>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="e.g. John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rollNo">College Roll Number / ID</label>
+                            <input type="text" id="rollNo" placeholder="e.g. 0103CS241001" required>
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="branchYear">Branch & Year of Study</label>
+                            <input type="text" id="branchYear" placeholder="e.g. CSE, 2nd Year" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactChannel">Contact Channel (GitHub / Discord)</label>
+                            <input type="text" id="contactChannel" placeholder="e.g. @github_handle" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section B: Role -->
+                <div class="form-section">
+                    <h3 class="section-title">Section B: Primary Role</h3>
+                    <div class="form-group">
+                        <label for="primaryRole">Select Your Primary Domain</label>
+                        <select id="primaryRole" class="input-field">
+                            <option value="Frontend Specialist">Frontend Specialist</option>
+                            <option value="Backend Specialist">Backend Specialist</option>
+                            <option value="Full-Stack Engineer">Full-Stack Engineer</option>
+                            <option value="UI/UX & Product Designer">UI/UX & Product Designer</option>
+                            <option value="AI / ML Engineer">AI / ML Engineer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Section C: Skills -->
+                <div class="form-section">
+                    <h3 class="section-title">Section C: Tech Stack & Skills</h3>
+                    <label style="font-size: 13px; margin-bottom: 8px; display: block; color: var(--text-primary); font-weight: 700;">Select Common Stack Elements (+)</label>
+                    <div class="skills-selector" id="skillsContainer">
+                        <span class="skill-tag" data-skill="C++">C++</span>
+                        <span class="skill-tag" data-skill="HTML/CSS">HTML/CSS</span>
+                        <span class="skill-tag" data-skill="JavaScript">JavaScript</span>
+                        <span class="skill-tag" data-skill="Python">Python</span>
+                        <span class="skill-tag" data-skill="React">React</span>
+                        <span class="skill-tag" data-skill="Figma">Figma</span>
+                        <span class="skill-tag" data-skill="Flask">Flask</span>
+                        <span class="skill-tag" data-skill="Sockets">Sockets</span>
+                    </div>
+                    <div class="form-group custom-skill-box">
+                        <label for="customSkills">Additional Skills (comma-separated)</label>
+                        <input type="text" id="customSkills" placeholder="e.g. Docker, OpenCV, Tailwind">
+                    </div>
+                </div>
+
+                <!-- Section D: Interests -->
+                <div class="form-section">
+                    <h3 class="section-title">Section D: Hackathon Interests</h3>
+                    <div class="form-group">
+                        <label>Target Hackathon Tracks</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label"><input type="checkbox" name="track" value="FinTech"> FinTech / Systems</label>
+                            <label class="checkbox-label"><input type="checkbox" name="track" value="AI/ML"> AI & Intelligent Systems</label>
+                            <label class="checkbox-label"><input type="checkbox" name="track" value="Open Innovation"> Open Innovation</label>
+                            <label class="checkbox-label"><input type="checkbox" name="track" value="Web3"> Web3 & Cloud</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="elevatorBio">Elevator Pitch / Bio (Max 160 chars)</label>
+                        <textarea id="elevatorBio" class="input-field" maxlength="160" placeholder="e.g. Passionate developer looking for teammates to build innovative solutions."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Save Profile</button>
+                <p id="profileStatus" class="status-badge" style="display: none; text-align: center; margin-top: 14px; font-family: monospace;"></p>
+            </form>
+        </section>
+
+        <!-- Right: Sticky Live Dev Card Preview -->
+        <aside class="preview-sticky">
+            <h4 class="preview-title">Live Dev Card Preview</h4>
+            <div class="dev-card">
+                <div class="card-top">
+                    <div class="avatar-circle" id="previewAvatar">--</div>
+                    <span class="status-indicator">● Available for Merge</span>
+                </div>
+                <h3 class="card-name" id="previewName">Your Full Name</h3>
+                <p class="card-meta" id="previewMeta">Branch & Year • @contact</p>
+                <span class="role-pill" id="previewRole">Frontend Specialist</span>
+                <p class="card-bio" id="previewBio">Your short elevator pitch will appear here in real time as you type...</p>
+                
+                <div class="card-skills-cloud" id="previewSkills">
+                    <span class="badge-skill" style="opacity: 0.5;">No skills selected</span>
+                </div>
+
+                <div class="card-footer">
+                    <span class="card-branch-tag">branch: solo-dev</span>
+                    <button type="button" class="btn-disabled-preview" disabled>Invite</button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+</html>

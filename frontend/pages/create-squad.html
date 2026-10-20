@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitMerge | Post a Team</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/squad.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-brand">
+            <span>GitMerge</span>
+            <span class="brand-badge">lab-build</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html" class="nav-item">Home</a></li>
+            <li><a href="find-teammates.html" class="nav-item">Find Teammates</a></li>
+            <li><a href="find-teams.html" class="nav-item">Find Teams</a></li>
+            <li><a href="match-engine.html" class="nav-item">Match Engine</a></li>
+            <li><a href="create-squad.html" class="nav-item active">Post a Team</a></li>
+        </ul>
+        <div class="nav-right">
+            <span class="engine-status"><span class="pulse-dot"></span>Port 8080</span>
+            <a href="profile.html" class="btn-profile-link">My Profile</a>
+        </div>
+    </header>
+
+    <main class="squad-container">
+        <!-- Left: Form Panel -->
+        <section class="squad-form-panel">
+            <div class="panel-header">
+                <span class="directory-badge">Recruiting Roster</span>
+                <h2>Create a Squad</h2>
+                <p class="panel-subtitle">Define project goals and list the missing roles needed to complete your team.</p>
+            </div>
+
+            <form id="squadForm">
+                <!-- Section A: Identity -->
+                <div class="form-section">
+                    <h3 class="section-title">Section A: Squad Identity</h3>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="teamName">Team / Project Name</label>
+                            <input type="text" id="teamName" placeholder="e.g. AlgoWarriors" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="targetTrack">Target Hackathon Track</label>
+                            <select id="targetTrack" class="input-field">
+                                <option value="FinTech / Systems">FinTech / Systems</option>
+                                <option value="AI & Intelligent Systems">AI & Intelligent Systems</option>
+                                <option value="Open Innovation">Open Innovation</option>
+                                <option value="Web3 & Cloud">Web3 & Cloud</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teamPitch">Project Elevator Pitch</label>
+                        <textarea id="teamPitch" class="input-field" maxlength="180" placeholder="e.g. Building a low-latency C++ transaction verification engine with an HTML canvas dashboard." required></textarea>
+                    </div>
+                </div>
+
+                <!-- Section B: Current Roster -->
+                <div class="form-section">
+                    <h3 class="section-title">Section B: Current Roster</h3>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="leaderName">Team Leader (Auto-filled)</label>
+                            <input type="text" id="leaderName" placeholder="e.g. Team Lead" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Current Team Size</label>
+                            <div class="size-selector-grid">
+                                <span class="size-pill selected" data-size="1">1 / 4</span>
+                                <span class="size-pill" data-size="2">2 / 4</span>
+                                <span class="size-pill" data-size="3">3 / 4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Existing Roles Covered in Squad</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label"><input type="checkbox" name="coveredRole" value="Backend" checked> Backend / C++</label>
+                            <label class="checkbox-label"><input type="checkbox" name="coveredRole" value="Frontend"> Frontend / Web</label>
+                            <label class="checkbox-label"><input type="checkbox" name="coveredRole" value="UI/UX"> UI/UX Design</label>
+                            <label class="checkbox-label"><input type="checkbox" name="coveredRole" value="AI/ML"> AI / ML Modeling</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section C: The Missing Role Bounty -->
+                <div class="form-section">
+                    <h3 class="section-title">Section C: The Missing Role Bounty</h3>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="neededRole">Urgent Role Needed</label>
+                            <select id="neededRole" class="input-field">
+                                <option value="Frontend Specialist">Frontend Specialist</option>
+                                <option value="Backend Specialist">Backend Specialist</option>
+                                <option value="UI/UX & Product Designer">UI/UX & Product Designer</option>
+                                <option value="AI / ML Engineer">AI / ML Engineer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="experiencePref">Experience Preference</label>
+                            <select id="experiencePref" class="input-field">
+                                <option value="Beginner Friendly">Beginner Friendly / Eager to Learn</option>
+                                <option value="Intermediate">Intermediate / Previous Hackathon Experience</option>
+                                <option value="Competitive">Competitive / Going for 1st Place</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="requiredStack">Must-Have Tech Requirements (comma-separated)</label>
+                        <input type="text" id="requiredStack" placeholder="e.g. HTML, CSS, JavaScript, Canvas API" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Publish Squad</button>
+                <p id="squadStatus" style="display: none; text-align: center; margin-top: 14px; font-family: monospace;"></p>
+            </form>
+        </section>
+
+        <!-- Right: Sticky Live Preview -->
+        <aside class="preview-sticky">
+            <h4 class="preview-title">Live Squad Card Preview</h4>
+            <div class="squad-preview-card">
+                <div class="squad-top">
+                    <h3 class="squad-name" id="previewTeamName">Team Name</h3>
+                    <span class="capacity-badge" id="previewCapacity">1/4 Members ● OPEN</span>
+                </div>
+                <p class="track-tag" id="previewTrack">Track: FinTech / Systems</p>
+                <p class="squad-pitch" id="previewPitch">Project elevator pitch will update here in real time as you type...</p>
+
+                <div class="roster-box">
+                    <p class="roster-title">Current Lineup</p>
+                    <div class="roster-members" id="previewLineup">
+                        <div class="roster-item">👤 <span id="previewLeaderDisplay">Team Lead</span> (Leader)</div>
+                    </div>
+                </div>
+
+                <div class="bounty-alert-box">
+                    <p class="bounty-title">⚠️ Urgently Hunting For:</p>
+                    <p class="bounty-role" id="previewBountyRole">Frontend Specialist</p>
+                    <p class="bounty-stack" id="previewBountyStack">Stack: HTML, CSS, JavaScript</p>
+                </div>
+
+                <div class="squad-footer">
+                    <span class="card-branch-tag" id="previewBranch">branch: team-new</span>
+                    <button type="button" class="btn-disabled-preview" disabled>Join Squad</button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/squad.js"></script>
+</body>
+</html>

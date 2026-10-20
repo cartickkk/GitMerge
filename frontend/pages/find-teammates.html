@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitMerge | Find Teammates</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/cards.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-brand">
+            <span>GitMerge</span>
+            <span class="brand-badge">lab-build</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html" class="nav-item">Home</a></li>
+            <li><a href="find-teammates.html" class="nav-item active">Find Teammates</a></li>
+            <li><a href="find-teams.html" class="nav-item">Find Teams</a></li>
+            <li><a href="match-engine.html" class="nav-item">Match Engine</a></li>
+            <li><a href="create-squad.html" class="nav-item">Post a Team</a></li>
+        </ul>
+        <div class="nav-right">
+            <span class="engine-status"><span class="pulse-dot"></span>Port 8080</span>
+            <a href="profile.html" class="btn-profile-link">My Profile</a>
+        </div>
+    </header>
+
+    <main class="directory-container">
+        <header class="directory-header">
+            <span class="directory-badge">Available Talent</span>
+            <h1>Solo Developers</h1>
+            <p>Connect with registered students ready to join your hackathon squad.</p>
+        </header>
+
+        <section class="filter-bar">
+            <div class="search-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by name, skill, or role (e.g. C++, Backend, React)...">
+            </div>
+        </section>
+
+        <!-- Dynamic solo cards populate here -->
+        <section class="card-grid" id="teammatesGrid"></section>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/teammates.js"></script>
+</body>
+</html>

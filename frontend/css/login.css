@@ -1,0 +1,91 @@
+.login-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.login-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+    padding: 36px 32px;
+    box-shadow: var(--shadow-card);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.login-header h1 {
+    font-size: 22px;
+    font-family: monospace;
+    color: var(--text-cream);
+    margin-bottom: 8px;
+}
+
+.login-header p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-cream);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    color: var(--text-cream);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 8px rgba(245, 218, 191, 0.25);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 13px;
+    margin-top: 6px;
+    background-color: var(--accent-bordo);
+    color: var(--text-cream);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: monospace;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.btn-submit:hover {
+    filter: brightness(1.2);
+}
+
+.status-badge {
+    margin-top: 14px;
+    font-size: 12px;
+    text-align: center;
+    min-height: 16px;
+}

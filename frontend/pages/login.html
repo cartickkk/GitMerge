@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitMerge | Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <main class="login-container">
+        <div class="login-card">
+            <header class="login-header">
+                <h1>git merge --login</h1>
+                <p>Sign in to access your hackathon squads and merge requests.</p>
+            </header>
+
+            <section class="login-body">
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username or GitHub Handle</label>
+                        <input type="text" id="username" name="username" placeholder="e.g. dopa0111" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="loginBtn">git merge --login</button>
+                    <p id="statusMessage" class="status-badge"></p>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>
